@@ -1,7 +1,7 @@
 <?php
 namespace Muqsit;
 
-use pocketmine\{Server, scheduler\PluginTask, plugin\PluginBase, event\Listener, utils\Config, utils\TextFormat as TF};
+use pocketmine\{Server, scheduler\PluginTask, plugin\PluginBase, event\Listener, utils\Config, utils\TextFormat as TF, event\player\PlayerMoveEvent};
 use Muqsit\Task;
 
 class Main extends PluginBase implements Listener{
@@ -18,7 +18,7 @@ class Task extends PluginTask{
     parent::__construct($plugin);
   }
   
-  public function onRun($tick){
+  public function onMove(PlayerMoveEvent $e){
     $pl = $this->plugin->getServer()->getOnlinePlayers();
     $cfg = $this->plugin->getConfig();
     foreach($pl as $p){
